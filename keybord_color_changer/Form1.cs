@@ -312,23 +312,6 @@ namespace keybord_color_changer
                         }
                     }
                 }
-                else
-                {
-                    // МИГРАЦИЯ из settings.txt
-                    string oldPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.txt");
-                    if (File.Exists(oldPath))
-                    {
-                        foreach (var line in File.ReadAllLines(oldPath))
-                        {
-                            var parts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                            if (parts.Length >= 4)
-                            {
-                                settings[parts[0].ToUpper()] = Color.FromArgb(int.Parse(parts[1]), int.Parse(parts[2]), int.Parse(parts[3]));
-                            }
-                        }
-                        SaveSettings();
-                    }
-                }
             }
             catch { }
         }
